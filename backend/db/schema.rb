@@ -13,15 +13,18 @@
 ActiveRecord::Schema.define(version: 2021_10_27_063535) do
 
   create_table "meals", force: :cascade do |t|
-    t.integer "patron_id"
     t.datetime "date"
+    t.integer "rating"
+    t.text "comment"
+    t.integer "patron_id"
+    t.integer "restaurant_id"
   end
 
   create_table "menu_items", force: :cascade do |t|
-    t.integer "restaurant_id"
     t.string "category"
     t.string "name"
     t.integer "price"
+    t.integer "restaurant_id"
   end
 
   create_table "orders", force: :cascade do |t|

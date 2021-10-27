@@ -55,67 +55,90 @@ puts "Seeding patrons..."
 
 
 puts "Seeding meals..."
-    # Hash stores generic bank of comments for seeding
-    review_bank = {
-        "1": ["Terrible!", "Gross!!", "Undercooked :(", "This was soo bad"],
-        "2": ["Not good :(", "Meh...", "I've had better!!", "Very bad order!"],
-        "3": [],
-        "4": [],
-        "5": []
-    }
-    # Meals for Patron1 - Junkrat
-        p1m1 = Meal.create(patron_id: p1_junkrat.id, date: rand(2.years).seconds.ago, rating: 0, comment: "")
-        p1m2 = Meal.create(patron_id: p1_junkrat.id, date: rand(2.years).seconds.ago, rating: 0, comment: "")
-        # p1m3 = Meal.create(patron_id: p1_junkrat.id, date: rand(2.years).seconds.ago, rating: 0, comment: "")
-    # Meals for Patron2 - Mercy
-        p2m1 = Meal.create(patron_id: p2_mercy.id, date: rand(2.years).seconds.ago, rating: 0, comment: "")
-        # p2m2 = Meal.create(patron_id: p2_mercy.id, date: rand(2.years).seconds.ago, rating: 0, comment: "")
-        # p2m3 = Meal.create(patron_id: p2_mercy.id, date: rand(2.years).seconds.ago, rating: 0, comment: "")
-    # Meals for Patron3 - McCree
-        p3m1 = Meal.create(patron_id: p3_mccree.id, date: rand(2.years).seconds.ago, rating: 0, comment: "")
-        p3m2 = Meal.create(patron_id: p3_mccree.id, date: rand(2.years).seconds.ago, rating: 0, comment: "")
-        p3m3 = Meal.create(patron_id: p3_mccree.id, date: rand(2.years).seconds.ago, rating: 0, comment: "")
-    # Meals for Patron4 - Tracer
-        p4m1 = Meal.create(patron_id: p4_tracer.id, date: rand(2.years).seconds.ago, rating: 0, comment: "")
-        p4m2 = Meal.create(patron_id: p4_tracer.id, date: rand(2.years).seconds.ago, rating: 0, comment: "")
-        p4m3 = Meal.create(patron_id: p4_tracer.id, date: rand(2.years).seconds.ago, rating: 0, comment: "")
-    # Meals for Patron5 - Lucio
-    #   p5m1 = Meal.create(patron_id: p5_lucio.id, date: rand(2.years).seconds.ago, rating: 0, comment: "")
-    #   p5m2 = Meal.create(patron_id: p5_lucio.id, date: rand(2.years).seconds.ago, rating: 0, comment: "")
-    #   p5m3 = Meal.create(patron_id: p5_lucio.id, date: rand(2.years).seconds.ago, rating: 0, comment: "")
+    # Hash stores dummy reviews as for seeding, indexing of review_bank matches 
+    review_bank = [
+            ["", "", "", "", "", ""],
+            ["Terrible!", "Gross!!", "Undercooked :(", "This was soo bad", ""],
+            ["Not good :(", "Meh...", "I've had better!!", "Very bad order!", ""],
+            ["Average", "So so", "It was OK", "Not bad, but not good either", ""],
+            ["Pretty good!", "I liked it :)", "Good but could be better...","Very good :D", ""],
+            ["Amazing!!", "Wow so good :D :D", "Yummmm", "Delicious!", ""]
+        ]
 
-puts "Seeding orders"
-    # Orders for Patron1 (Junkrat)'s Meals
-        p1m1o1 = Order.create(meal_id: p1m1.id, menu_item_id: r2m1_nachos.id)
-        p1m1o2 = Order.create(meal_id: p1m1.id, menu_item_id: r2m4_icecream.id)
-        #
-        p1m2o1 = Order.create(meal_id: p1m2.id, menu_item_id: r1m2_pineapple.id)
-    # Orders for Patron2 (Mercy)'s Meals    
-        p2m1o1 = Order.create(meal_id: p2m1.id, menu_item_id: r1m1_wings.id)
-        p2m1o2 = Order.create(meal_id: p2m1.id, menu_item_id: r1m4_spaghetti.id)
-        p2m1o3 = Order.create(meal_id: p2m1.id, menu_item_id: r1m5_gbread.id)
-        p2m1o4 = Order.create(meal_id: p2m1.id, menu_item_id: r1m6_ices.id)
-    # Orders for Patron3 (McCree)'s Meals   
-        p3m1o1 = Order.create(meal_id: p3m1.id, menu_item_id: r3m3_chicken.id)
-        p3m1o2 = Order.create(meal_id: p3m1.id, menu_item_id: r3m5_cobbler.id)
-        #
-        p3m2o1 = Order.create(meal_id: p3m2.id, menu_item_id: r4m1_salad.id)
-        p3m2o2 = Order.create(meal_id: p3m2.id, menu_item_id: r4m2_beef.id)
-        p3m2o3 = Order.create(meal_id: p3m2.id, menu_item_id: r4m3_spinach.id)
-        #
-        p3m3o1 = Order.create(meal_id: p3m2.id, menu_item_id: r2m2_burrito.id)
-    # Orders for Patron4 (Tracer)'s Meals   
-        p4m1o1 = Order.create(meal_id: p4m1.id, menu_item_id: r4m2_beef.id)
-        p4m1o1 = Order.create(meal_id: p4m1.id, menu_item_id: r4m4_donut.id)
-        #
-        p4m2o1 = Order.create(meal_id: p4m2.id, menu_item_id: r2m2_burrito.id)
-        p4m2o1 = Order.create(meal_id: p4m2.id, menu_item_id: r2m3_guac.id)
-        p4m2o1 = Order.create(meal_id: p4m2.id, menu_item_id: r2m4_icecream.id)
-        #
-        p4m3o1 = Order.create(meal_id: p4m3.id, menu_item_id: r1m1_wings.id)
-        p4m3o2 = Order.create(meal_id: p4m3.id, menu_item_id: r1m4_spaghetti.id)
-        p4m3o3 = Order.create(meal_id: p4m3.id, menu_item_id: r1m5_gbread.id)
-        p4m3o4 = Order.create(meal_id: p4m3.id, menu_item_id: r1m6_ices.id)
+        # Need random but reusable values to pair ratings to comments in review_bank
+        rand_num_bank = []
+        500.times { rand_num_bank << rand(6) }
+
+        # binding.pry
+
+        Patron.all.each do |p|
+            r_id = rand(Restaurant.all.count) + 1
+            (rand(10)+1).times do
+                Meal.create(patron_id: p.id, restaurant_id: r_id, date: rand(2.years).seconds.ago, rating: rand_num_bank[0], comment: review_bank[rand_num_bank.shift][ rand(6) ])
+            end
+            menu = MenuItem.where("restaurant_id = #{r_id}")
+            puts menu.length
+
+            Meal.all.each do |m|
+                # binding.pry
+                # puts "MENU: ", menu
+                (rand(3)+1).times do
+                    item_id = rand(menu.length) + 1
+                    Order.create(meal_id: m.id, menu_item_id: item_id)
+                end
+            end
+        
+        end
+
+
+#     # Meals for Patron1 - Junkrat
+#         p1m1 = Meal.create(patron_id: p1_junkrat.id, date: rand(2.years).seconds.ago, rating: rand_num_bank[0], comment: review_bank[rand_num_bank.shift][ rand(6) ])
+#         p1m2 = Meal.create(patron_id: p1_junkrat.id, date: rand(2.years).seconds.ago, rating: rand_num_bank[0] , comment: review_bank[rand_num_bank.shift - 1][ rand(6) ])
+
+#     # Meals for Patron2 - Mercy
+#         p2m1 = Meal.create(patron_id: p2_mercy.id, date: rand(2.years).seconds.ago, rating: rand_num_bank[0], comment: review_bank[rand_num_bank.shift][ rand(6) ])
+
+#     # Meals for Patron3 - McCree
+#         p3m1 = Meal.create(patron_id: p3_mccree.id, date: rand(2.years).seconds.ago, rating: rand_num_bank[0], comment: review_bank[rand_num_bank.shift][ rand(6) ])
+#         p3m2 = Meal.create(patron_id: p3_mccree.id, date: rand(2.years).seconds.ago, rating: rand_num_bank[0], comment: review_bank[rand_num_bank.shift][ rand(6) ])
+#         p3m3 = Meal.create(patron_id: p3_mccree.id, date: rand(2.years).seconds.ago, rating: rand_num_bank[0], comment: review_bank[rand_num_bank.shift][ rand(6) ])
+#     # Meals for Patron4 - Tracer
+#         p4m1 = Meal.create(patron_id: p4_tracer.id, date: rand(2.years).seconds.ago, rating: rand_num_bank[0], comment: review_bank[rand_num_bank.shift][ rand(6) ])
+#         p4m2 = Meal.create(patron_id: p4_tracer.id, date: rand(2.years).seconds.ago, rating: rand_num_bank[0], comment: review_bank[rand_num_bank.shift][ rand(6) ])
+#         p4m3 = Meal.create(patron_id: p4_tracer.id, date: rand(2.years).seconds.ago, rating: rand_num_bank[0], comment: review_bank[rand_num_bank.shift][ rand(6) ])
+
+# puts "Seeding orders"
+#     # Orders for Patron1 (Junkrat)'s Meals
+#         p1m1o1 = Order.create(meal_id: p1m1.id, menu_item_id: r2m1_nachos.id)
+#         p1m1o2 = Order.create(meal_id: p1m1.id, menu_item_id: r2m4_icecream.id)
+#         #
+#         p1m2o1 = Order.create(meal_id: p1m2.id, menu_item_id: r1m2_pineapple.id)
+#     # Orders for Patron2 (Mercy)'s Meals    
+#         p2m1o1 = Order.create(meal_id: p2m1.id, menu_item_id: r1m1_wings.id)
+#         p2m1o2 = Order.create(meal_id: p2m1.id, menu_item_id: r1m4_spaghetti.id)
+#         p2m1o3 = Order.create(meal_id: p2m1.id, menu_item_id: r1m5_gbread.id)
+#         p2m1o4 = Order.create(meal_id: p2m1.id, menu_item_id: r1m6_ices.id)
+#     # Orders for Patron3 (McCree)'s Meals   
+#         p3m1o1 = Order.create(meal_id: p3m1.id, menu_item_id: r3m3_chicken.id)
+#         p3m1o2 = Order.create(meal_id: p3m1.id, menu_item_id: r3m5_cobbler.id)
+#         #
+#         p3m2o1 = Order.create(meal_id: p3m2.id, menu_item_id: r4m1_salad.id)
+#         p3m2o2 = Order.create(meal_id: p3m2.id, menu_item_id: r4m2_beef.id)
+#         p3m2o3 = Order.create(meal_id: p3m2.id, menu_item_id: r4m3_spinach.id)
+#         #
+#         p3m3o1 = Order.create(meal_id: p3m2.id, menu_item_id: r2m2_burrito.id)
+#     # Orders for Patron4 (Tracer)'s Meals   
+#         p4m1o1 = Order.create(meal_id: p4m1.id, menu_item_id: r4m2_beef.id)
+#         p4m1o1 = Order.create(meal_id: p4m1.id, menu_item_id: r4m4_donut.id)
+#         #
+#         p4m2o1 = Order.create(meal_id: p4m2.id, menu_item_id: r2m2_burrito.id)
+#         p4m2o1 = Order.create(meal_id: p4m2.id, menu_item_id: r2m3_guac.id)
+#         p4m2o1 = Order.create(meal_id: p4m2.id, menu_item_id: r2m4_icecream.id)
+#         #
+#         p4m3o1 = Order.create(meal_id: p4m3.id, menu_item_id: r1m1_wings.id)
+#         p4m3o2 = Order.create(meal_id: p4m3.id, menu_item_id: r1m4_spaghetti.id)
+#         p4m3o3 = Order.create(meal_id: p4m3.id, menu_item_id: r1m5_gbread.id)
+#         p4m3o4 = Order.create(meal_id: p4m3.id, menu_item_id: r1m6_ices.id)
         
         
 

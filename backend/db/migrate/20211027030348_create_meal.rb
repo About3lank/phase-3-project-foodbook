@@ -6,6 +6,7 @@ class CreateMeal < ActiveRecord::Migration[6.1]
       t.integer :rating
       t.text :comment
       t.integer :patron_id
+      t.integer :restaurant_id
     end
   end
 end

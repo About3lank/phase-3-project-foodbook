@@ -11,21 +11,36 @@ class ApplicationController < Sinatra::Base
   get "/db" do
     Patron.all.to_json(include: {
       meals: {
-        except: :patron_id,
+        except: [:patron_id, :restaurant_id],
+        include: :restaurant,
         include: {
           orders: {
-            only: :id,
-            include: {
-              menu_item: {
-                except: :restaurant_id,
-                include: :restaurant
-              }
-            }
+            except: [:meal_id, :menu_item_id],
+            include: :menu_item
           }
         }
       }
     })
   end
+
+  # get "/db" do
+  #   Patron.all.to_json(include: {
+  #     meals: {
+  #       except: [:patron_id, :restaurant_id]
+  #       include: {
+  #         [orders:, :] {
+  #           except: [:menu_id, :restaurant_id],
+  #           include: {
+  #             menu_item: {
+  #               except: :restaurant_id,
+  #               include: :restaurant
+  #             }
+  #           }
+  #         }
+  #       }
+  #     }
+  #   })
+  # end
 
 
   get "/db/patrons" do
