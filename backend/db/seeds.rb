@@ -8,7 +8,7 @@ puts "🌱 Starting up seeds.rb ..."
         Order.destroy_all
 
 
-#####################################################################
+####################################################
 
 
 puts "Seeding restaurants..."
@@ -20,31 +20,31 @@ puts "Seeding restaurants..."
 
 puts "Seeding menu_items..."
     # Menu Items for Restaurant1 - Pizza Planet
-        r1m1_wings = MenuItem.create(restaurant_id: r1_pizza.id, category: "Appetizers", name: "Chicken Wings", price: 7)
-        r1m2_pineapple = MenuItem.create(restaurant_id: r1_pizza.id, category: "Entrees", name: "Pineapple Pizza", price: 5)
-        r1m3_pepperoni = MenuItem.create(restaurant_id: r1_pizza.id, category: "Entrees", name: "Pepperoni Pizza", price: 5)
-        r1m4_spaghetti = MenuItem.create(restaurant_id: r1_pizza.id, category: "Entrees", name: "Spaghetti and Meatballs", price: 12)
-        r1m5_gbread = MenuItem.create(restaurant_id: r1_pizza.id, category: "Sides", name: "Garlic Bread", price: 6)
-        r1m6_ices = MenuItem.create(restaurant_id: r1_pizza.id, category: "Desserts", name: "Italian Ices", price: 4)
+        r1m1_wings = MenuItem.create(name: "Chicken Wings", category: "Appetizers", price: 7, restaurant_id: r1_pizza.id)
+        r1m2_pineapple = MenuItem.create(name: "Pineapple Pizza", category: "Entrees", price: 5, restaurant_id: r1_pizza.id)
+        r1m3_pepperoni = MenuItem.create(name: "Pepperoni Pizza", category: "Entrees", price: 5, restaurant_id: r1_pizza.id)
+        r1m4_spaghetti = MenuItem.create(name: "Spaghetti and Meatballs", category: "Entrees", price: 12, restaurant_id: r1_pizza.id)
+        r1m5_gbread = MenuItem.create(name: "Garlic Bread", category: "Sides", price: 6, restaurant_id: r1_pizza.id)
+        r1m6_ices = MenuItem.create(name: "Italian Ices", category: "Desserts", price: 4, restaurant_id: r1_pizza.id)
 
     # Menu Items for Restaurant2 - Tacos Tacos Tacos
-        r2m1_nachos = MenuItem.create(restaurant_id: r2_tacos.id, category: "Appetizers", name: "Explosive Hot Nachos", price: 9)
-        r2m2_burrito = MenuItem.create(restaurant_id: r2_tacos.id, category: "Entrees", name: "Burrito Caliente", price: 12)
-        r2m3_guac = MenuItem.create(restaurant_id: r2_tacos.id, category: "Sides", name: "Guacamole",  price: 3)
-        r2m4_icecream = MenuItem.create(restaurant_id: r2_tacos.id, category: "Desserts", name: "Spicy Ice Cream", price: 6)
+        r2m1_nachos = MenuItem.create(name: "Explosive Hot Nachos", category: "Appetizers", price: 9, restaurant_id: r2_tacos.id)
+        r2m2_burrito = MenuItem.create(name: "Burrito Caliente", category: "Entrees", price: 12, restaurant_id: r2_tacos.id)
+        r2m3_guac = MenuItem.create(name: "Guacamole", category: "Sides", price: 3, restaurant_id: r2_tacos.id)
+        r2m4_icecream = MenuItem.create(name: "Spicy Ice Cream", category: "Desserts", price: 6, restaurant_id: r2_tacos.id)
 
     # Menu Items for Restaurant3 - Jim's BBQ
-        r3m1_sliders = MenuItem.create(restaurant_id: r3_bbq.id, category: "Appetizers", name: "Sliders", price: 7)
-        r3m2_pork = MenuItem.create(restaurant_id: r3_bbq.id, category: "Entrees", name: "Pulled Pork Sandwich", price: 12)
-        r3m3_chicken = MenuItem.create(restaurant_id: r3_bbq.id, category: "Entrees", name: "Chicken Sandwich", price: 11)
-        r3m4_fries = MenuItem.create(restaurant_id: r3_bbq.id, category: "Sides", name: "French Fries",  price: 5)
-        r3m5_cobbler = MenuItem.create(restaurant_id: r3_bbq.id, category: "Desserts", name: "Peach Cobbler", price: 8)
+        r3m1_sliders = MenuItem.create(name: "Sliders", category: "Appetizers", price: 7, restaurant_id: r3_bbq.id)
+        r3m2_pork = MenuItem.create(name: "Pulled Pork Sandwich", category: "Entrees", price: 12, restaurant_id: r3_bbq.id)
+        r3m3_chicken = MenuItem.create(name: "Chicken Sandwich", category: "Entrees", price: 11, restaurant_id: r3_bbq.id)
+        r3m4_fries = MenuItem.create(name: "French Fries", category: "Sides", price: 5, restaurant_id: r3_bbq.id)
+        r3m5_cobbler = MenuItem.create(name: "Peach Cobbler", category: "Desserts", price: 8, restaurant_id: r3_bbq.id)
 
     # Menu Items for Restaurant4 - Fancyson Steakhouse
-        r4m1_salad = MenuItem.create(restaurant_id: r4_steak.id, category: "Appetizers", name: "Cobb Salad", price: 27)
-        r4m2_beef = MenuItem.create(restaurant_id: r4_steak.id, category: "Entrees", name: "Beef Wellington", price: 58)
-        r4m3_spinach = MenuItem.create(restaurant_id: r4_steak.id, category: "Sides", name: "Creamed Spinach",  price: 19)
-        r4m4_donut = MenuItem.create(restaurant_id: r4_steak.id, category: "Desserts", name: "Jellyfish Jelly Donut", price: 24)
+        r4m1_salad = MenuItem.create(name: "Cobb Salad", category: "Appetizers", price: 27, restaurant_id: r4_steak.id)
+        r4m2_beef = MenuItem.create(name: "Beef Wellington", category: "Entrees", price: 58, restaurant_id: r4_steak.id)
+        r4m3_spinach = MenuItem.create(name: "Creamed Spinach", category: "Sides", price: 19, restaurant_id: r4_steak.id)
+        r4m4_donut = MenuItem.create(name: "Jellyfish Jelly Donut", category: "Desserts", price: 24, restaurant_id: r4_steak.id)
 
 puts "Seeding patrons..."
         p1_junkrat = Patron.create(name: "Jamison Fawkes", image: "https://pbs.twimg.com/profile_images/787695298835542016/nfLYRC-U_400x400.jpg")
@@ -55,26 +55,34 @@ puts "Seeding patrons..."
 
 
 puts "Seeding meals..."
+    # Hash stores generic bank of comments for seeding
+    review_bank = {
+        "1": ["Terrible!", "Gross!!", "Undercooked :(", "This was soo bad"],
+        "2": ["Not good :(", "Meh...", "I've had better!!", "Very bad order!"],
+        "3": [],
+        "4": [],
+        "5": []
+    }
     # Meals for Patron1 - Junkrat
-        p1m1 = Meal.create(patron_id: p1_junkrat.id, date: rand(2.years).seconds.ago)
-        p1m2 = Meal.create(patron_id: p1_junkrat.id, date: rand(2.years).seconds.ago)
-        # p1m3 = Meal.create(patron_id: p1_junkrat.id, date: rand(2.years).seconds.ago)
+        p1m1 = Meal.create(patron_id: p1_junkrat.id, date: rand(2.years).seconds.ago, rating: 0, comment: "")
+        p1m2 = Meal.create(patron_id: p1_junkrat.id, date: rand(2.years).seconds.ago, rating: 0, comment: "")
+        # p1m3 = Meal.create(patron_id: p1_junkrat.id, date: rand(2.years).seconds.ago, rating: 0, comment: "")
     # Meals for Patron2 - Mercy
-        p2m1 = Meal.create(patron_id: p2_mercy.id, date: rand(2.years).seconds.ago)
-        # p2m2 = Meal.create(patron_id: p2_mercy.id, date: rand(2.years).seconds.ago)
-        # p2m3 = Meal.create(patron_id: p2_mercy.id, date: rand(2.years).seconds.ago)
+        p2m1 = Meal.create(patron_id: p2_mercy.id, date: rand(2.years).seconds.ago, rating: 0, comment: "")
+        # p2m2 = Meal.create(patron_id: p2_mercy.id, date: rand(2.years).seconds.ago, rating: 0, comment: "")
+        # p2m3 = Meal.create(patron_id: p2_mercy.id, date: rand(2.years).seconds.ago, rating: 0, comment: "")
     # Meals for Patron3 - McCree
-        p3m1 = Meal.create(patron_id: p3_mccree.id, date: rand(2.years).seconds.ago)
-        p3m2 = Meal.create(patron_id: p3_mccree.id, date: rand(2.years).seconds.ago)
-        p3m3 = Meal.create(patron_id: p3_mccree.id, date: rand(2.years).seconds.ago)
+        p3m1 = Meal.create(patron_id: p3_mccree.id, date: rand(2.years).seconds.ago, rating: 0, comment: "")
+        p3m2 = Meal.create(patron_id: p3_mccree.id, date: rand(2.years).seconds.ago, rating: 0, comment: "")
+        p3m3 = Meal.create(patron_id: p3_mccree.id, date: rand(2.years).seconds.ago, rating: 0, comment: "")
     # Meals for Patron4 - Tracer
-        p4m1 = Meal.create(patron_id: p4_tracer.id, date: rand(2.years).seconds.ago)
-        p4m2 = Meal.create(patron_id: p4_tracer.id, date: rand(2.years).seconds.ago)
-        p4m3 = Meal.create(patron_id: p4_tracer.id, date: rand(2.years).seconds.ago)
+        p4m1 = Meal.create(patron_id: p4_tracer.id, date: rand(2.years).seconds.ago, rating: 0, comment: "")
+        p4m2 = Meal.create(patron_id: p4_tracer.id, date: rand(2.years).seconds.ago, rating: 0, comment: "")
+        p4m3 = Meal.create(patron_id: p4_tracer.id, date: rand(2.years).seconds.ago, rating: 0, comment: "")
     # Meals for Patron5 - Lucio
-    #   p5m1 = Meal.create(patron_id: p5_lucio.id, date: rand(2.years).seconds.ago)
-    #   p5m2 = Meal.create(patron_id: p5_lucio.id, date: rand(2.years).seconds.ago)
-    #   p5m3 = Meal.create(patron_id: p5_lucio.id, date: rand(2.years).seconds.ago)
+    #   p5m1 = Meal.create(patron_id: p5_lucio.id, date: rand(2.years).seconds.ago, rating: 0, comment: "")
+    #   p5m2 = Meal.create(patron_id: p5_lucio.id, date: rand(2.years).seconds.ago, rating: 0, comment: "")
+    #   p5m3 = Meal.create(patron_id: p5_lucio.id, date: rand(2.years).seconds.ago, rating: 0, comment: "")
 
 puts "Seeding orders"
     # Orders for Patron1 (Junkrat)'s Meals

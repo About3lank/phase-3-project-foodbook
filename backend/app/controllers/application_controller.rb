@@ -3,34 +3,64 @@ class ApplicationController < Sinatra::Base
   
   # Add your routes here
   get "/" do
-    { message: "Good luck with your project!" }.to_json
+    # { message: "Good luck with your project!" }.to_json
+    "Homepage".to_json
   end
 
-  get "/db/patrons" do
+
+  get "/db" do
     Patron.all.to_json(include: {
       meals: {
-        include: 
-        :orders
+        except: :patron_id,
+        include: {
+          orders: {
+            only: :id,
+            include: {
+              menu_item: {
+                except: :restaurant_id,
+                include: :restaurant
+              }
+            }
+          }
         }
       }
-    )
+    })
   end
+
+
+  get "/db/patrons" do
+    Patron.all.to_json
+  end
+
+  # get "/db/patrons/:id" do
+  #   Patron.all.to_json
+  # end
 
   get "/db/restaurants" do
-    Restaurant.all.to_json(include: [:menu_items])
+    Restaurant.all.to_json(include: {
+      menu_items: {
+        except: :restaurant_id
+      }
+    })
   end
 
-
   get "/db/menu_items" do
-    MenuItem.all.to_json 
+    MenuItem.all.to_json(except: :restaurant_id, include: {
+      restaurant: {
+      }
+    })
   end
 
   get "/db/meals" do
-    Meal.all.to_json(include: :orders)
+    Meal.all.to_json(include: {
+      orders: {
+        include: :menu_item
+      }
+    })
   end
 
   get "/db/orders" do
-    Order.all.to_json(include: [:restaurant, :patron, :meal])
+    Order.all.to_json
   end
 
 end
