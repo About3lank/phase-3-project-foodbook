@@ -52,7 +52,10 @@ puts "Seeding patrons..."
         Patron.create(name: "Jesse McCree", image: "https://www.dexerto.com/wp-content/uploads/2021/10/22/mccree-overwatch-cole-cassidy.jpg")
         Patron.create(name: "Amélie Lacroix", image: "https://cdn.vox-cdn.com/thumbor/35fC0eUYMANzACY0vtRK67YM-ow=/0x0:1920x798/1200x800/filters:focal(983x70:1289x376)/cdn.vox-cdn.com/uploads/chorus_image/image/60025255/d4e273e1efaf62f4b28eecdd1bd68793.0.png")
         Patron.create(name: "Lúcio Correia dos Santos", image: "https://fenixbazaar.com/wp-content/uploads/2019/08/lucio.jpg.webp")
-
+        Patron.create(name: "Dr. Mei-Ling Zhou", image:"https://upload.wikimedia.org/wikipedia/en/a/a2/Mei_Overwatch.png")
+        Patron.create(name: "Fareeha Amari", image: "https://www.pcgamesn.com/wp-content/uploads/legacy/Pharah_Overwatch-1200x675.jpg")
+        Patron.create(name: "Jack Morrison", image: "https://www.fanbyte.com/wp-content/uploads/2019/01/Overwatch-Soldier-Gay-1.jpg")
+        Patron.create(name: "Aleksandra Zaryanova", image: "https://cdn.mos.cms.futurecdn.net/18b09acca7a6c5c189853f7426e96467.jpg")
 
 puts "Seeding meals..."
     # Hash stores dummy reviews for seeding, indexing of review_bank matches ratings
@@ -71,8 +74,8 @@ puts "Seeding meals..."
 
         # Create random number of meals (between 5 and 10) for each patron
         Patron.all.each do |p|
-            r_id = rand(Restaurant.all.count) + 1
-            (rand(6)+5).times do
+            (rand(5)+6).times do
+                r_id = rand(Restaurant.all.count) + 1
                 Meal.create(patron_id: p.id, restaurant_id: r_id, date: rand(2.years).seconds.ago, rating: rand_num_bank[0], comment: review_bank[rand_num_bank.shift][ rand(5) ])
             end
         end
@@ -80,9 +83,13 @@ puts "Seeding meals..."
         # Create random number of menu_items (between 1 and 4) for each meal
         Meal.all.each do |m|
             menu = MenuItem.where("restaurant_id = #{m.restaurant_id}")
-            (rand(4)+1).times do
-                item_index = rand(menu.length)
-                item_id = menu[item_index].id
+            item_array = []
+            (rand(6)+1).times do
+                item_array << rand(menu.length)
+            end
+            item_array_unique = item_array.uniq
+            item_array_unique.length.times do
+                item_id = menu[item_array_unique.shift].id
                 Order.create(meal_id: m.id, menu_item_id: item_id)
             end
         end

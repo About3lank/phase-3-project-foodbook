@@ -2,13 +2,8 @@ class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
   
   # Add your routes here
+
   get "/" do
-    # { message: "Good luck with your project!" }.to_json
-    "Homepage".to_json
-  end
-
-
-  get "/db" do
     Patron.all.to_json(include: {
       meals: {
         except: [:patron_id, :restaurant_id],
@@ -20,11 +15,24 @@ class ApplicationController < Sinatra::Base
     })
   end
 
-  get "/db/patrons" do
+  get "/patrons" do
     Patron.all.to_json
   end
 
-  get "/db/restaurants" do
+  get "/patrons/:id" do
+    Patron.find(params[:id]).to_json(include: {
+      meals: {
+        except: [:patron_id, :restaurant_id],
+        include: {
+          restaurant: {except: [:meal_id, :menu_item_id]},
+          menu_items: {except: :restaurant_id}
+        }   
+      }
+
+    })
+  end
+
+  get "/restaurants" do
     Restaurant.all.to_json(include: {
       menu_items: {
         except: :restaurant_id
@@ -32,14 +40,14 @@ class ApplicationController < Sinatra::Base
     })
   end
 
-  get "/db/menu_items" do
+  get "/menu_items" do
     MenuItem.all.to_json(except: :restaurant_id, include: {
       restaurant: {
       }
     })
   end
 
-  get "/db/meals" do
+  get "/meals" do
     Meal.all.to_json(include: {
       orders: {
         include: :menu_item
@@ -47,7 +55,23 @@ class ApplicationController < Sinatra::Base
     })
   end
 
-  get "/db/orders" do
+  post "/meals" do
+    meal = Meal.create(
+      date: DateTime.now(),
+      rating: params[:rating],
+      comment: params[:comment],
+      patron_id: params[:patron_id],
+      restaurant_id: params[:restaurant_id]
+    )
+  end
+
+  delete "/meals/:id" do
+    meal = Meal.find(params[:id])
+    meal.destroy
+    meal.to_json
+  end
+
+  get "/orders" do
     Order.all.to_json
   end
 

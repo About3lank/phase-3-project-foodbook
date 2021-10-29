@@ -1,3 +1,24 @@
+.profile-pic {
+  max-width: 200px;
+  height: auto;
+}
+
+
+table, th, td {
+  border: solid 1px black;
+  border-collapse: collapse;
+  padding: 4px;
+}
+
+table, h1, image {
+  margin: 20px auto 0px auto
+}
+
+.delete-button {
+  background-color: rgb(255, 89, 89);
+}
+
+
 .App {
   text-align: center;
 }
