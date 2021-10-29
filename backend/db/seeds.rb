@@ -27,6 +27,7 @@ puts "Seeding menu_items..."
         MenuItem.create(name: "Italian Ices", category: "Desserts", price: 4, restaurant_id: r1_pizza.id)
 
     # Menu Items for Restaurant2 - Tacos Tacos Tacos
+    
         MenuItem.create(name: "Explosive Hot Nachos", category: "Appetizers", price: 9, restaurant_id: r2_tacos.id)
         MenuItem.create(name: "Burrito Caliente", category: "Entrees", price: 12, restaurant_id: r2_tacos.id)
         MenuItem.create(name: "Guacamole", category: "Sides", price: 3, restaurant_id: r2_tacos.id)
@@ -50,7 +51,7 @@ puts "Seeding patrons..."
         Patron.create(name: "Dr. Angela Ziegler", image: "https://m.media-amazon.com/images/I/61AnSXf7TSL._AC_SX425_.jpg")
         Patron.create(name: "Jesse McCree", image: "https://www.dexerto.com/wp-content/uploads/2021/10/22/mccree-overwatch-cole-cassidy.jpg")
         Patron.create(name: "Amélie Lacroix", image: "https://cdn.vox-cdn.com/thumbor/35fC0eUYMANzACY0vtRK67YM-ow=/0x0:1920x798/1200x800/filters:focal(983x70:1289x376)/cdn.vox-cdn.com/uploads/chorus_image/image/60025255/d4e273e1efaf62f4b28eecdd1bd68793.0.png")
-        p5_lucio = Patron.create(name: "Lúcio Correia dos Santos", image: "https://fenixbazaar.com/wp-content/uploads/2019/08/lucio.jpg.webp")
+        Patron.create(name: "Lúcio Correia dos Santos", image: "https://fenixbazaar.com/wp-content/uploads/2019/08/lucio.jpg.webp")
 
 
 puts "Seeding meals..."
@@ -68,19 +69,20 @@ puts "Seeding meals..."
         rand_num_bank = []
         1000.times { rand_num_bank << rand(6) }
 
-        # Create random number of meals (between 1 and 10) for each patron
+        # Create random number of meals (between 5 and 10) for each patron
         Patron.all.each do |p|
             r_id = rand(Restaurant.all.count) + 1
-            (rand(10)+1).times do
+            (rand(6)+5).times do
                 Meal.create(patron_id: p.id, restaurant_id: r_id, date: rand(2.years).seconds.ago, rating: rand_num_bank[0], comment: review_bank[rand_num_bank.shift][ rand(5) ])
             end
         end
 
-        # Create random number of mebu_items (between 1 and 4) for each meal
+        # Create random number of menu_items (between 1 and 4) for each meal
         Meal.all.each do |m|
             menu = MenuItem.where("restaurant_id = #{m.restaurant_id}")
             (rand(4)+1).times do
-                item_id = rand(menu.length) + 1
+                item_index = rand(menu.length)
+                item_id = menu[item_index].id
                 Order.create(meal_id: m.id, menu_item_id: item_id)
             end
         end
