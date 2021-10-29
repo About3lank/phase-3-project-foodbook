@@ -54,7 +54,7 @@ puts "Seeding patrons..."
 
 
 puts "Seeding meals..."
-    # Hash stores dummy reviews as for seeding, indexing of review_bank matches 
+    # Hash stores dummy reviews for seeding, indexing of review_bank matches ratings
     review_bank = [
             ["", "", "", "", ""],
             ["Terrible!", "Gross!!", "Undercooked :(", "This was soo bad", ""],
