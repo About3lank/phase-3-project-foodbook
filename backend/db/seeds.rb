@@ -50,7 +50,7 @@ puts "Seeding patrons..."
         Patron.create(name: "Dr. Angela Ziegler", image: "https://m.media-amazon.com/images/I/61AnSXf7TSL._AC_SX425_.jpg")
         Patron.create(name: "Jesse McCree", image: "https://www.dexerto.com/wp-content/uploads/2021/10/22/mccree-overwatch-cole-cassidy.jpg")
         Patron.create(name: "Amélie Lacroix", image: "https://cdn.vox-cdn.com/thumbor/35fC0eUYMANzACY0vtRK67YM-ow=/0x0:1920x798/1200x800/filters:focal(983x70:1289x376)/cdn.vox-cdn.com/uploads/chorus_image/image/60025255/d4e273e1efaf62f4b28eecdd1bd68793.0.png")
-        # p5_lucio = Patron.create(name: "Lúcio Correia dos Santos", image: "https://fenixbazaar.com/wp-content/uploads/2019/08/lucio.jpg.webp")
+        p5_lucio = Patron.create(name: "Lúcio Correia dos Santos", image: "https://fenixbazaar.com/wp-content/uploads/2019/08/lucio.jpg.webp")
 
 
 puts "Seeding meals..."
