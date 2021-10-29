@@ -12,13 +12,10 @@ class ApplicationController < Sinatra::Base
     Patron.all.to_json(include: {
       meals: {
         except: [:patron_id, :restaurant_id],
-        include: :restaurant,
         include: {
-          orders: {
-            except: [:meal_id, :menu_item_id],
-            include: :menu_item
-          }
-        }
+          restaurant: {except: [:meal_id, :menu_item_id]},
+          menu_items: {except: :restaurant_id}
+        }   
       }
     })
   end

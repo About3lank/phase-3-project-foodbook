@@ -67,7 +67,7 @@ puts "Seeding meals..."
 
         # Need random but reusable values to pair ratings to comments in review_bank
         rand_num_bank = []
-        500.times { rand_num_bank << rand(6) }
+        1000.times { rand_num_bank << rand(6) }
 
         # binding.pry
 
@@ -76,19 +76,22 @@ puts "Seeding meals..."
             (rand(10)+1).times do
                 Meal.create(patron_id: p.id, restaurant_id: r_id, date: rand(2.years).seconds.ago, rating: rand_num_bank[0], comment: review_bank[rand_num_bank.shift][ rand(6) ])
             end
-            menu = MenuItem.where("restaurant_id = #{r_id}")
+        end
+
+        Meal.all.each do |m|
+            # binding.pry
+            # puts "MENU: ", menu
+
+            menu = MenuItem.where("restaurant_id = #{m.restaurant_id}")
             puts menu.length
 
-            Meal.all.each do |m|
-                # binding.pry
-                # puts "MENU: ", menu
-                (rand(3)+1).times do
-                    item_id = rand(menu.length) + 1
-                    Order.create(meal_id: m.id, menu_item_id: item_id)
-                end
+            (rand(4)+1).times do
+                item_id = rand(menu.length) + 1
+                Order.create(meal_id: m.id, menu_item_id: item_id)
             end
-        
         end
+        
+        
 
 
 #     # Meals for Patron1 - Junkrat
